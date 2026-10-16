@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- Meta viewport: necesario para el diseño responsive en celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Gestión de Usuarios</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <h1>Panel de Gestión de Usuarios</h1>
+  </header>
+
+  <main class="contenedor">
+    <!-- Espacio para mensajes de estado: cargando, errores y confirmaciones -->
+    <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+
+    <!-- Formulario para agregar / modificar usuarios -->
+    <section class="tarjeta">
+      <h2 id="titulo-formulario">Registrar usuario</h2>
+      <form id="formulario" novalidate>
+        <div class="campo">
+          <label for="id">Id</label>
+          <input type="text" id="id" name="id" inputmode="numeric" placeholder="Ej: 11">
+        </div>
+        <div class="campo">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre completo">
+        </div>
+        <div class="campo">
+          <label for="correo">Correo</label>
+          <input type="text" id="correo" name="correo" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="campo">
+          <label for="ciudad">Ciudad</label>
+          <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad">
+        </div>
+        <div class="botones-formulario">
+          <button type="submit" id="boton-enviar" class="btn btn-principal">Agregar</button>
+          <button type="button" id="boton-cancelar" class="btn btn-secundario" hidden>Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Buscador en vivo -->
+    <section class="tarjeta">
+      <label for="buscador">Buscar usuarios por nombre</label>
+      <input type="text" id="buscador" placeholder="Escribe para filtrar...">
+      <p id="resumen" class="resumen"></p>
+    </section>
+
+    <!-- Tabla de usuarios (el tbody lo llena JavaScript) -->
+    <section class="tarjeta">
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Ciudad</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-usuarios"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- JavaScript externo, enlazado antes de cerrar el body -->
+  <script src="script.js"></script>
+</body>
+</html>

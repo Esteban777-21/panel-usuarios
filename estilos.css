@@ -1,0 +1,204 @@
+/* ===== Estilos generales ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.encabezado {
+  background: #1e3a8a;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;            /* Grid: una columna en celular */
+  gap: 1rem;
+}
+
+.tarjeta {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.tarjeta h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
+/* ===== Formulario ===== */
+form {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+
+.campo {
+  display: flex;            /* Flexbox: label arriba del input */
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input {
+  padding: 0.6rem;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+input:focus {
+  outline: 2px solid #3b82f6;
+  border-color: #3b82f6;
+}
+
+input:disabled {
+  background: #e2e8f0;
+  cursor: not-allowed;
+}
+
+.botones-formulario {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ===== Botones ===== */
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-principal { background: #2563eb; }
+.btn-secundario { background: #64748b; }
+.btn-editar { background: #f59e0b; }
+.btn-eliminar { background: #dc2626; }
+
+.btn:hover { opacity: 0.88; }
+
+/* ===== Mensajes de estado ===== */
+.mensaje {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  min-height: 2.6rem;
+  background: #e2e8f0;
+}
+
+.mensaje.exito { background: #dcfce7; color: #166534; }
+.mensaje.error { background: #fee2e2; color: #991b1b; }
+.mensaje.info  { background: #dbeafe; color: #1e40af; }
+
+.resumen {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 0;
+}
+
+/* ===== Tabla ===== */
+.tabla-contenedor {
+  overflow-x: auto;   /* el scroll queda dentro de la tabla, no en la página */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 0;
+}
+
+th, td {
+  padding: 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  word-break: break-word;
+}
+
+thead th {
+  background: #eff6ff;
+}
+
+.acciones {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* ===== Responsive: celular (hasta 600px) =====
+   La tabla se convierte en tarjetas para que no se desborde */
+@media (max-width: 600px) {
+  thead {
+    display: none;
+  }
+
+  table, tbody, tr, td {
+    display: block;
+    width: 100%;
+  }
+
+  tr {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    padding: 0.4rem;
+  }
+
+  td {
+    border-bottom: none;
+    padding: 0.3rem 0.5rem;
+  }
+
+  td::before {
+    content: attr(data-etiqueta) ": ";
+    font-weight: 700;
+  }
+
+  td.acciones::before {
+    content: "";
+  }
+}
+
+/* ===== Responsive: tablet (768px en adelante) ===== */
+@media (min-width: 768px) {
+  .encabezado h1 { font-size: 1.8rem; }
+
+  form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .botones-formulario {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===== Responsive: escritorio (1024px en adelante) ===== */
+@media (min-width: 1024px) {
+  form {
+    grid-template-columns: 120px 1fr 1fr 1fr;
+    align-items: end;
+  }
+}
